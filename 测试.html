@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var imgList = [];
+    let xhr = new XMLHttpRequest();
+    xhr.open("get", "https://muise-git-master-329639010.vercel.app/banner?type=0",false);
+    xhr.send();
+    xhr.addEventListener("readystatechange", function () {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        imgList = JSON.parse(xhr.response);
+        console.log(imgList)
+        // for (let i = 0; i < Obj.banners.length; i++) {
+        //   imgList[i] = Obj.banners[i].imageUrl;
+        // }
+      }
+    }) 
+    // debugger
+    console.log(imgList);
+  </script>
+</body>
+
+</html>
