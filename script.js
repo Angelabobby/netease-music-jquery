@@ -40,6 +40,7 @@ $(function () {
   let index = 0; // 定义全局索引，用于同步轮播图、背景图和按钮交互信息
   let interval; // 定义全局定时器变量，用于定时切换轮播图
 
+  // 用于测试Ajax的按钮
   $("button").on("click", function () {
     $.ajax({
       type: "get",
@@ -112,7 +113,6 @@ $(function () {
   });
 
   // *****登录框拖动事件*****
-
   loginBoxHead.on("mousedown", function (Edown) {
     function move(Emove) {
       // e.clientX 鼠标在文档的横向位置
@@ -128,7 +128,6 @@ $(function () {
   });
 
   // *****密码登录Ajax*****
-
   function pwdLoginAjax(e) {
     e.preventDefault();
     $.ajax({
