@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>无缝切换demo</title>
+  <style>
+    body {
+      margin: 0;
+    }
+
+    .showBox {
+      width: 400px;
+      height: 100px;
+      background-color: pink;
+      overflow: hidden;
+      margin-left: 400px;
+      position: relative;
+    }
+
+    .contentBox {
+      width: 1600px;
+      height: 100px;
+      margin-left: -400px;
+    }
+
+    .content {
+      width: 400px;
+      height: 100px;
+      float: left;
+      position: absolute;
+      transition: left 1s ease;
+    }
+
+    .item1 {
+      background-color: green;
+    }
+
+    .item2 {
+      background-color: red;
+    }
+
+    #b1 {
+      left: -400px;
+    }
+
+    #b2 {
+      left: 0;
+    }
+
+    #b3 {
+      left: 400px;
+    }
+
+    #b4 {
+      left: 800px;
+    }
+
+    .btns {
+      margin-left: 400px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="showBox">
+    <div class="contentBox">
+      <div class="content item2" id="b1">2</div>
+      <div class="content item1" id="b2">1</div>
+      <div class="content item2" id="b3">2</div>
+      <div class="content item1" id="b4">1</div>
+    </div>
+  </div>
+
+  <br>
+  <br>
+  <br>
+  <div class="btns">
+    <input type="button" value="←" class="left">
+    <input type="button" value="→" class="right">
+  </div>
+  <script>
+    let isMoving = false; // 标记节点移动状态的变量
+    let contentBox = document.querySelector(".contentBox");
+    let left = document.querySelector(".left");
+    let right = document.querySelector(".right");
+
+    left.addEventListener("click", function () {
+      if (isMoving === false) {
+        isMoving = true;
+        // 移动第2、3、4个节点
+        document.querySelector("#b2").style.left = document.querySelector("#b2").offsetLeft - 400 + "px";
+        document.querySelector("#b3").style.left = document.querySelector("#b3").offsetLeft - 400 + "px";
+        document.querySelector("#b4").style.left = document.querySelector("#b4").offsetLeft - 400 + "px";
+        let temp = document.querySelector("#b1"); //保存第1个节点
+        contentBox.removeChild(document.querySelector("#b1")); //移除第1个节点
+        contentBox.appendChild(temp); //将第1个节点添加到队列末尾
+        contentBox.children[3].style.left = "800px"; //调整末尾节点的样式
+        // 修改id属性
+        for (var i = 0; i < contentBox.children.length; i++) {
+          contentBox.children[i].setAttribute("id", `b${i + 1}`);
+        }
+        setTimeout(() => {
+          isMoving = false;
+        }, 1000);
+      }
+    })
+    right.addEventListener("click", function () {
+      if (isMoving === false) {
+        isMoving = true;
+        // 移动第1、2、3个节点
+        document.querySelector("#b1").style.left = document.querySelector("#b1").offsetLeft + 400 + "px";
+        document.querySelector("#b2").style.left = document.querySelector("#b2").offsetLeft + 400 + "px";
+        document.querySelector("#b3").style.left = document.querySelector("#b3").offsetLeft + 400 + "px";
+        let temp = document.querySelector("#b4"); //保存第4个节点
+        contentBox.removeChild(document.querySelector("#b4")); //移除第4个节点
+        contentBox.insertBefore(temp, document.querySelector("#b1")); //将第4个节点添加到第1个节点之前
+        contentBox.children[0].style.left = "-400px"; //调整新添加节点的位置到队列开头
+        // 修改id属性
+        for (var i = 0; i < contentBox.children.length; i++) {
+          contentBox.children[i].setAttribute("id", `b${i + 1}`);
+        }
+        setTimeout(() => {
+          isMoving = false;
+        }, 1000);
+      }
+    })
+  </script>
+</body>
+
+</html>
