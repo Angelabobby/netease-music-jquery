@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jquery重构</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="icon"
+      href="https://s1.music.126.net/style/favicon.ico?v20180823"
+    />
+  </head>
+
+  <body>
+    <!-- 主导航条 -->
+    <button class="test">test</button>
+    <div class="top">
+      <div class="topContent">
+        <a href="https://music.163.com/#">
+          <h1 class="logo"></h1>
+        </a>
+        <ul class="nav">
+          <li><a href="">发现音乐</a></li>
+          <li><a href="">我的音乐</a></li>
+          <li><a href="">关注</a></li>
+          <li><a href="">商城</a></li>
+          <li><a href="">音乐人</a></li>
+          <li>
+            <a href="">下载客户端</a>
+            <sup class="hot">&nbsp;</sup>
+          </li>
+        </ul>
+        <div class="searchBox">
+          <span
+            ><input
+              type="text"
+              name=""
+              class="search"
+              placeholder="音乐/视频/电台/用户"
+          /></span>
+          <div class="searchRes"></div>
+        </div>
+        <div class="creator-box">
+          <a href="" class="creator">创作者中心</a>
+        </div>
+
+        <div class="login-btn-mod">
+          <div class="login-btn-box">
+            <img
+              class="avatar"
+              src="https://p3.music.126.net/SUeqMM8HOIpHv9Nhl9qt9w==/109951165647004069.jpg"
+              alt=""
+            />
+            <a href="" class="login-btn">登录</a>
+          </div>
+          <div class="drop-down">
+            <ul>
+              <li>
+                <a href=""><i class="home-logo"></i><em>我的主页</em></a>
+              </li>
+              <li>
+                <a href=""><i class="noti-logo"></i><em>我的消息</em></a>
+              </li>
+              <li>
+                <a href=""><i class="level-logo"></i><em>我的等级</em></a>
+              </li>
+              <li>
+                <a href=""><i class="vip-logo"></i><em>VIP会员</em></a>
+              </li>
+              <li>
+                <a href=""><i class="preference-logo"></i><em>个人设置</em></a>
+              </li>
+              <li>
+                <a href=""><i class="kyc-logo"></i><em>实名认证</em></a>
+              </li>
+              <li>
+                <a href="" class="log-out"
+                  ><i class="log-out-logo"></i><em>退出</em></a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 登录框 -->
+    <div class="login-box">
+      <div class="loginBoxHead">
+        <div class="headLeft">
+          <span class="headLeftText">手机号登录</span>
+        </div>
+        <div class="close">
+          <span class="closeImg"></span>
+        </div>
+      </div>
+
+      <div class="loginBoxBody">
+        <div class="verify">
+          <!-- 手机号码模块 -->
+          <div class="phone-mod">
+            <a href="" class="country-code">
+              +86
+              <span class="country-code-arrow"></span>
+            </a>
+
+            <div class="phone-box">
+              <input
+                type="text"
+                name=""
+                id="phone"
+                placeholder="请输入手机号"
+              />
+            </div>
+          </div>
+
+          <!-- 密码登录模块 -->
+          <div class="password-mod">
+            <input
+              type="password"
+              name=""
+              id="password"
+              placeholder="请输入密码"
+            />
+            <a href="" class="forget">忘记密码？</a>
+          </div>
+
+          <!-- 验证码登录模块 -->
+          <div class="captcha-mod">
+            <input
+              type="text"
+              name=""
+              id="captcha"
+              placeholder="请输入验证码"
+            />
+            <a href="" class="get-captcha">
+              <i>获取验证码</i>
+            </a>
+          </div>
+
+          <!-- 错误模块 -->
+          <div class="errors-mod">
+            <div class="errors">
+              <i class="errors-logo"></i>
+              <span class="errors-desc"></span>
+            </div>
+          </div>
+
+          <!-- 选择登录方式模块 -->
+          <div class="option-mod">
+            <a href="" class="choose-login-method">密码登录</a>
+            <label for="auto">
+              <input type="checkbox" name="" id="auto" />
+              <span>自动登录</span>
+            </label>
+          </div>
+
+          <!-- 登录按钮模块 -->
+          <div class="login-button-mod">
+            <a href="" class="login-button-blue">
+              <i>登&nbsp;&nbsp;&nbsp;录</i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="login-box-foot">
+        <a href="" class="login-methods">&lt;&nbsp;&nbsp;其他登录方式</a>
+        <a href="" class="register">没有帐号？免费注册&nbsp;&nbsp;&gt;</a>
+      </div>
+    </div>
+
+    <!-- 次级导航条 -->
+    <div class="subTop">
+      <ul class="subNav">
+        <li>
+          <a href=""><em class="emFirst">推荐</em></a>
+        </li>
+        <li>
+          <a href=""><em>排行榜</em></a>
+        </li>
+        <li>
+          <a href=""><em>歌单</em></a>
+        </li>
+        <li>
+          <a href=""><em>主播电台</em></a>
+        </li>
+        <li>
+          <a href=""><em>歌手</em></a>
+        </li>
+        <li>
+          <a href=""><em>新碟上架</em></a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 轮播图 -->
+    <div class="carouBox">
+      <div class="background-box">
+        <div class="background"></div>
+      </div>
+      <div class="carousel">
+        <div class="carouselLeft">
+          <img src="" alt="" class="img" />
+          <a class="leftBtn left-right"></a>
+          <div class="btns-box"></div>
+        </div>
+        <div class="carouselRight">
+          <a href="https://music.163.com/#/download" class="downloadBtn"></a>
+          <p class="download-desc">PC 安卓 iPhone WP iPad Mac 六大客户端</p>
+          <a class="rightBtn left-right"></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 页面主体 -->
+    <div class="bulk">
+      <!-- 主体左部分 -->
+      <div class="bulkLeft">
+        <div class="bulkLeftContent">
+          <!-- 热门推荐 -->
+          <div class="playlistRecom">
+            <div class="recomHead">
+              <div class="recomTitle"><a href="">热门推荐</a></div>
+              <div class="recomTab">
+                <a href="">华语</a>
+                <a href="">流行</a>
+                <a href="">摇滚</a>
+                <a href="">民谣</a>
+                <a href="">电子</a>
+              </div>
+              <div class="more"><a href="">更多</a></div>
+            </div>
+            <div class="recomBody">
+              <ul>
+                <li>
+                  <div class="playlistImgDiv">
+                    <div href="" class="img-background-box">
+                      <img src="" alt="" class="playlistImgs" /><a
+                        href=""
+                        class="img-background"
+                      ></a>
+                    </div>
+                    <div class="imgBottom">
+                      <span class="headset"></span>
+                      <span class="playCount"></span>
+                      <a href="" class="playAudio"></a>
+                    </div>
+                  </div>
+                  <a href="" class="playlistDesc"></a>
+                </li>
+
+                <li>
+                  <div class="playlistImgDiv">
+                    <div href="" class="img-background-box">
+                      <img src="" alt="" class="playlistImgs" /><a
+                        href=""
+                        class="img-background"
+                      ></a>
+                    </div>
+                    <div class="imgBottom">
+                      <span class="headset"></span>
+                      <span class="playCount"></span>
+                      <a href="" class="playAudio"></a>
+                    </div>
+                  </div>
+                  <a href="" class="playlistDesc"></a>
+                </li>
+
+                <li>
+                  <div class="playlistImgDiv">
+                    <div href="" class="img-background-box">
+                      <img src="" alt="" class="playlistImgs" /><a
+                        href=""
+                        class="img-background"
+                      ></a>
+                    </div>
+                    <div class="imgBottom">
+                      <span class="headset"></span>
+                      <span class="playCount"></span>
+                      <a href="" class="playAudio"></a>
+                    </div>
+                  </div>
+                  <a href="" class="playlistDesc"></a>
+                </li>
+
+                <li>
+                  <div class="playlistImgDiv">
+                    <div href="" class="img-background-box">
+                      <img src="" alt="" class="playlistImgs" /><a
+                        href=""
+                        class="img-background"
+                      ></a>
+                    </div>
+                    <div class="imgBottom">
+                      <span class="headset"></span>
+                      <span class="playCount"></span>
+                      <a href="" class="playAudio"></a>
+                    </div>
+                  </div>
+                  <a href="" class="playlistDesc"></a>
+                </li>
+
+                <li>
+                  <div class="playlistImgDiv">
+                    <div href="" class="img-background-box">
+                      <img src="" alt="" class="playlistImgs" /><a
+                        href=""
+                        class="img-background"
+                      ></a>
+                    </div>
+                    <div class="imgBottom">
+                      <span class="headset"></span>
+                      <span class="playCount"></span>
+                      <a href="" class="playAudio"></a>
+                    </div>
+                  </div>
+                  <a href="" class="playlistDesc"></a>
+                </li>
+
+                <li>
+                  <div class="playlistImgDiv">
+                    <div href="" class="img-background-box">
+                      <img src="" alt="" class="playlistImgs" /><a
+                        href=""
+                        class="img-background"
+                      ></a>
+                    </div>
+                    <div class="imgBottom">
+                      <span class="headset"></span>
+                      <span class="playCount"></span>
+                      <a href="" class="playAudio"></a>
+                    </div>
+                  </div>
+                  <a href="" class="playlistDesc"></a>
+                </li>
+
+                <li>
+                  <div class="playlistImgDiv">
+                    <div href="" class="img-background-box">
+                      <img src="" alt="" class="playlistImgs" /><a
+                        href=""
+                        class="img-background"
+                      ></a>
+                    </div>
+                    <div class="imgBottom">
+                      <span class="headset"></span>
+                      <span class="playCount"></span>
+                      <a href="" class="playAudio"></a>
+                    </div>
+                  </div>
+                  <a href="" class="playlistDesc"></a>
+                </li>
+
+                <li>
+                  <div class="playlistImgDiv">
+                    <div href="" class="img-background-box">
+                      <img src="" alt="" class="playlistImgs" /><a
+                        href=""
+                        class="img-background"
+                      ></a>
+                    </div>
+                    <div class="imgBottom">
+                      <span class="headset"></span>
+                      <span class="playCount"></span>
+                      <a href="" class="playAudio"></a>
+                    </div>
+                  </div>
+                  <a href="" class="playlistDesc"></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 新碟上架 -->
+          <div class="new">
+            <div class="newHead">
+              <div class="newTitle"><a href="">新碟上架</a></div>
+              <div class="more"><a href="">更多</a></div>
+            </div>
+            <div class="scroll">
+              <div class="showBox">
+                <a href="" class="scrollLeft"></a>
+                <div class="showContentBox">
+                  <div class="showContent">
+                    <div class="group" id="g1">
+                      <div class="contentItem contentItem-first">
+                        <div class="coverImgBox">
+                          <img src="" alt="" class="coverImg" />
+                          <a href="" class="img-glass"></a>
+                          <a href="" class="play-icon-btn"></a>
+                        </div>
+                        <a href="" class="songName"></a>
+                        <a href="" class="songArtist"></a>
+                      </div>
+
+                      <div class="contentItem">
+                        <div class="coverImgBox">
+                          <img src="" alt="" class="coverImg" />
+                          <a href="" class="img-glass"></a>
+                          <a href="" class="play-icon-btn"></a>
+                        </div>
+                        <a href="" class="songName"></a>
+                        <a href="" class="songArtist"></a>
+                      </div>
+
+                      <div class="contentItem">
+                        <div class="coverImgBox">
+                          <img src="" alt="" class="coverImg" />
+                          <a href="" class="img-glass"></a>
+                          <a href="" class="play-icon-btn"></a>
+                        </div>
+                        <a href="" class="songName"></a>
+                        <a href="" class="songArtist"></a>
+                      </div>
+
+                      <div class="contentItem">
+                        <div class="coverImgBox">
+                          <img src="" alt="" class="coverImg" />
+                          <a href="" class="img-glass"></a>
+                          <a href="" class="play-icon-btn"></a>
+                        </div>
+                        <a href="" class="songName"></a>
+                        <a href="" class="songArtist"></a>
+                      </div>
+
+                      <div class="contentItem">
+                        <div class="coverImgBox">
+                          <img src="" alt="" class="coverImg" />
+                          <a href="" class="img-glass"></a>
+                          <a href="" class="play-icon-btn"></a>
+                        </div>
+                        <a href="" class="songName"></a>
+                        <a href="" class="songArtist"></a>
+                      </div>
+                    </div>
+                    <div class="group" id="g2">
+                      <div class="contentItem contentItem-first">
+                        <div class="coverImgBox">
+                          <img src="" alt="" class="coverImg" />
+                          <a href="" class="img-glass"></a>
+                          <a href="" class="play-icon-btn"></a>
+                        </div>
+                        <a href="" class="songName"></a>
+                        <a href="" class="songArtist"></a>
+                      </div>
+
+                      <div class="contentItem">
+                        <div class="coverImgBox">
+                          <img src="" alt="" class="coverImg" />
+                          <a href="" class="img-glass"></a>
+                          <a href="" class="play-icon-btn"></a>
+                        </div>
+                        <a href="" class="songName"></a>
+                        <a href="" class="songArtist"></a>
+                      </div>
+
+                      <div class="contentItem">
+                        <div class="coverImgBox">
+                          <img src="" alt="" class="coverImg" />
+                          <a href="" class="img-glass"></a>
+                          <a href="" class="play-icon-btn"></a>
+                        </div>
+                        <a href="" class="songName"></a>
+                        <a href="" class="songArtist"></a>
+                      </div>
+
+                      <div class="contentItem">
+                        <div class="coverImgBox">
+                          <img src="" alt="" class="coverImg" />
+                          <a href="" class="img-glass"></a>
+                          <a href="" class="play-icon-btn"></a>
+                        </div>
+                        <a href="" class="songName"></a>
+                        <a href="" class="songArtist"></a>
+                      </div>
+
+                      <div class="contentItem">
+                        <div class="coverImgBox">
+                          <img src="" alt="" class="coverImg" />
+                          <a href="" class="img-glass"></a>
+                          <a href="" class="play-icon-btn"></a>
+                        </div>
+                        <a href="" class="songName"></a>
+                        <a href="" class="songArtist"></a>
+                      </div>
+                    </div>
+                    <div class="group" id="g3">
+                      <div class="contentItem contentItem-first">
+                        <div class="coverImgBox">
+                          <img src="" alt="" class="coverImg" />
+                          <a href="" class="img-glass"></a>
+                          <a href="" class="play-icon-btn"></a>
+                        </div>
+                        <a href="" class="songName"></a>
+                        <a href="" class="songArtist"></a>
+                      </div>
+
+                      <div class="contentItem">
+                        <div class="coverImgBox">
+                          <img src="" alt="" class="coverImg" />
+                          <a href="" class="img-glass"></a>
+                          <a href="" class="play-icon-btn"></a>
+                        </div>
+                        <a href="" class="songName"></a>
+                        <a href="" class="songArtist"></a>
+                      </div>
+
+                      <div class="contentItem">
+                        <div class="coverImgBox">
+                          <img src="" alt="" class="coverImg" />
+                          <a href="" class="img-glass"></a>
+                          <a href="" class="play-icon-btn"></a>
+                        </div>
+                        <a href="" class="songName"></a>
+                        <a href="" class="songArtist"></a>
+                      </div>
+
+                      <div class="contentItem">
+                        <div class="coverImgBox">
+                          <img src="" alt="" class="coverImg" />
+                          <a href="" class="img-glass"></a>
+                          <a href="" class="play-icon-btn"></a>
+                        </div>
+                        <a href="" class="songName"></a>
+                        <a href="" class="songArtist"></a>
+                      </div>
+
+                      <div class="contentItem">
+                        <div class="coverImgBox">
+                          <img src="" alt="" class="coverImg" />
+                          <a href="" class="img-glass"></a>
+                          <a href="" class="play-icon-btn"></a>
+                        </div>
+                        <a href="" class="songName"></a>
+                        <a href="" class="songArtist"></a>
+                      </div>
+                    </div>
+                    <div class="group" id="g4">
+                      <div class="contentItem contentItem-first">
+                        <div class="coverImgBox">
+                          <img src="" alt="" class="coverImg" />
+                          <a href="" class="img-glass"></a>
+                          <a href="" class="play-icon-btn"></a>
+                        </div>
+                        <a href="" class="songName"></a>
+                        <a href="" class="songArtist"></a>
+                      </div>
+
+                      <div class="contentItem">
+                        <div class="coverImgBox">
+                          <img src="" alt="" class="coverImg" />
+                          <a href="" class="img-glass"></a>
+                          <a href="" class="play-icon-btn"></a>
+                        </div>
+                        <a href="" class="songName"></a>
+                        <a href="" class="songArtist"></a>
+                      </div>
+
+                      <div class="contentItem">
+                        <div class="coverImgBox">
+                          <img src="" alt="" class="coverImg" />
+                          <a href="" class="img-glass"></a>
+                          <a href="" class="play-icon-btn"></a>
+                        </div>
+                        <a href="" class="songName"></a>
+                        <a href="" class="songArtist"></a>
+                      </div>
+
+                      <div class="contentItem">
+                        <div class="coverImgBox">
+                          <img src="" alt="" class="coverImg" />
+                          <a href="" class="img-glass"></a>
+                          <a href="" class="play-icon-btn"></a>
+                        </div>
+                        <a href="" class="songName"></a>
+                        <a href="" class="songArtist"></a>
+                      </div>
+
+                      <div class="contentItem">
+                        <div class="coverImgBox">
+                          <img src="" alt="" class="coverImg" />
+                          <a href="" class="img-glass"></a>
+                          <a href="" class="play-icon-btn"></a>
+                        </div>
+                        <a href="" class="songName"></a>
+                        <a href="" class="songArtist"></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <a href="" class="scrollRight"></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 榜单 -->
+          <div class="bill">
+            <div class="billHead">
+              <div class="billTitle"><a href="">榜单</a></div>
+              <div class="more"><a href="">更多</a></div>
+            </div>
+            <div class="billBody">
+              <div class="rising-bill billBodyBox">
+                <div class="box-head">
+                  <div class="bill-cover">
+                    <img src="" alt="" />
+                    <a href="" class="bill-cover-glass"></a>
+                  </div>
+                  <div class="cover-title">
+                    <a href="">
+                      <h3>飙升榜</h3>
+                    </a>
+                    <a href="" class="play" title="播放"></a>
+                    <a href="" class="collect" title="收藏"></a>
+                  </div>
+                </div>
+                <div class="box-body">
+                  <ol>
+                    <li>
+                      <span class="top-songs">1</span>
+                      <a href="" class="songs"></a>
+                      <div class="show-component">
+                        <a href="" class="bill-play icons" title="播放"></a>
+                        <a
+                          href=""
+                          class="bill-add-to-playlist icons"
+                          title="添加到播放列表"
+                        ></a>
+                        <a href="" class="bill-collect icons" title="收藏"></a>
+                      </div>
+                    </li>
+                    <li>
+                      <span class="top-songs">2</span>
+                      <a href="" class="songs"></a>
+                      <div class="show-component">
+                        <a href="" class="bill-play icons" title="播放"></a>
+                        <a
+                          href=""
+                          class="bill-add-to-playlist icons"
+                          title="添加到播放列表"
+                        ></a>
+                        <a href="" class="bill-collect icons" title="收藏"></a>
+                      </div>
+                    </li>
+                    <li>
+                      <span class="top-songs">3</span>
+                      <a href="" class="songs"></a>
+                      <div class="show-component">
+                        <a href="" class="bill-play icons" title="播放"></a>
+                        <a
+                          href=""
+                          class="bill-add-to-playlist icons"
+                          title="添加到播放列表"
+                        ></a>
+                        <a href="" class="bill-collect icons" title="收藏"></a>
+                      </div>
+                    </li>
+                    <li>
+                      <span>4</span>
+                      <a href="" class="songs"></a>
+                      <div class="show-component">
+                        <a href="" class="bill-play icons" title="播放"></a>
+                        <a
+                          href=""
+                          class="bill-add-to-playlist icons"
+                          title="添加到播放列表"
+                        ></a>
+                        <a href="" class="bill-collect icons" title="收藏"></a>
+                      </div>
+                    </li>
+                    <li>
+                      <span>5</span>
+                      <a href="" class="songs"></a>
+                      <div class="show-component">
+                        <a href="" class="bill-play icons" title="播放"></a>
+                        <a
+                          href=""
+                          class="bill-add-to-playlist icons"
+                          title="添加到播放列表"
+                        ></a>
+                        <a href="" class="bill-collect icons" title="收藏"></a>
+                      </div>
+                    </li>
+                    <li>
+                      <span>6</span>
+                      <a href="" class="songs"></a>
+                      <div class="show-component">
+                        <a href="" class="bill-play icons" title="播放"></a>
+                        <a
+                          href=""
+                          class="bill-add-to-playlist icons"
+                          title="添加到播放列表"
+                        ></a>
+                        <a href="" class="bill-collect icons" title="收藏"></a>
+                      </div>
+                    </li>
+                    <li>
+                      <span>7</span>
+                      <a href="" class="songs"></a>
+                      <div class="show-component">
+                        <a href="" class="bill-play icons" title="播放"></a>
+                        <a
+                          href=""
+                          class="bill-add-to-playlist icons"
+                          title="添加到播放列表"
+                        ></a>
+                        <a href="" class="bill-collect icons" title="收藏"></a>
+                      </div>
+                    </li>
+                    <li>
+                      <span>8</span>
+                      <a href="" class="songs"></a>
+                      <div class="show-component">
+                        <a href="" class="bill-play icons" title="播放"></a>
+                        <a
+                          href=""
+                          class="bill-add-to-playlist icons"
+                          title="添加到播放列表"
+                        ></a>
+                        <a href="" class="bill-collect icons" title="收藏"></a>
+                      </div>
+                    </li>
+                    <li>
+                      <span>9</span>
+                      <a href="" class="songs"></a>
+                      <div class="show-component">
+                        <a href="" class="bill-play icons" title="播放"></a>
+                        <a
+                          href=""
+                          class="bill-add-to-playlist icons"
+                          title="添加到播放列表"
+                        ></a>
+                        <a href="" class="bill-collect icons" title="收藏"></a>
+                      </div>
+                    </li>
+                    <li>
+                      <span>10</span>
+                      <a href="" class="songs"></a>
+                      <div class="show-component">
+                        <a href="" class="bill-play icons" title="播放"></a>
+                        <a
+                          href=""
+                          class="bill-add-to-playlist icons"
+                          title="添加到播放列表"
+                        ></a>
+                        <a href="" class="bill-collect icons" title="收藏"></a>
+                      </div>
+                    </li>
+                  </ol>
+                  <div class="bill-more">
+                    <a href="">查看全部&gt;</a>
+                  </div>
+                </div>
+              </div>
+              <div class="new-bill billBodyBox">
+                <div class="box-head">
+                  <div class="bill-cover">
+                    <img src="" alt="" />
+                    <a href="" class="bill-cover-glass"></a>
+                  </div>
+                  <div class="cover-title">
+                    <a href="">
+                      <h3>新歌榜</h3>
+                    </a>
+                    <a href="" class="play" title="播放"></a>
+                    <a href="" class="collect" title="收藏"></a>
+                  </div>
+                </div>
+                <div class="box-body">
+                  <ol>
+                    <li>
+                      <span class="top-songs">1</span>
+                      <a href="" class="songs"></a>
+                      <div class="show-component">
+                        <a href="" class="bill-play icons" title="播放"></a>
+                        <a
+                          href=""
+                          class="bill-add-to-playlist icons"
+                          title="添加到播放列表"
+                        ></a>
+                        <a href="" class="bill-collect icons" title="收藏"></a>
+                      </div>
+                    </li>
+                    <li>
+                      <span class="top-songs">2</span>
+                      <a href="" class="songs"></a>
+                      <div class="show-component">
+                        <a href="" class="bill-play icons" title="播放"></a>
+                        <a
+                          href=""
+                          class="bill-add-to-playlist icons"
+                          title="添加到播放列表"
+                        ></a>
+                        <a href="" class="bill-collect icons" title="收藏"></a>
+                      </div>
+                    </li>
+                    <li>
+                      <span class="top-songs">3</span>
+                      <a href="" class="songs"></a>
+                      <div class="show-component">
+                        <a href="" class="bill-play icons" title="播放"></a>
+                        <a
+                          href=""
+                          class="bill-add-to-playlist icons"
+                          title="添加到播放列表"
+                        ></a>
+                        <a href="" class="bill-collect icons" title="收藏"></a>
+                      </div>
+                    </li>
+                    <li>
+                      <span>4</span>
+                      <a href="" class="songs"></a>
+                      <div class="show-component">
+                        <a href="" class="bill-play icons" title="播放"></a>
+                        <a
+                          href=""
+                          class="bill-add-to-playlist icons"
+                          title="添加到播放列表"
+                        ></a>
+                        <a href="" class="bill-collect icons" title="收藏"></a>
+                      </div>
+                    </li>
+                    <li>
+                      <span>5</span>
+                      <a href="" class="songs"></a>
+                      <div class="show-component">
+                        <a href="" class="bill-play icons" title="播放"></a>
+                        <a
+                          href=""
+                          class="bill-add-to-playlist icons"
+                          title="添加到播放列表"
+                        ></a>
+                        <a href="" class="bill-collect icons" title="收藏"></a>
+                      </div>
+                    </li>
+                    <li>
+                      <span>6</span>
+                      <a href="" class="songs"></a>
+                      <div class="show-component">
+                        <a href="" class="bill-play icons" title="播放"></a>
+                        <a
+                          href=""
+                          class="bill-add-to-playlist icons"
+                          title="添加到播放列表"
+                        ></a>
+                        <a href="" class="bill-collect icons" title="收藏"></a>
+                      </div>
+                    </li>
+                    <li>
+                      <span>7</span>
+                      <a href="" class="songs"></a>
+                      <div class="show-component">
+                        <a href="" class="bill-play icons" title="播放"></a>
+                        <a
+                          href=""
+                          class="bill-add-to-playlist icons"
+                          title="添加到播放列表"
+                        ></a>
+                        <a href="" class="bill-collect icons" title="收藏"></a>
+                      </div>
+                    </li>
+                    <li>
+                      <span>8</span>
+                      <a href="" class="songs"></a>
+                      <div class="show-component">
+                        <a href="" class="bill-play icons" title="播放"></a>
+                        <a
+                          href=""
+                          class="bill-add-to-playlist icons"
+                          title="添加到播放列表"
+                        ></a>
+                        <a href="" class="bill-collect icons" title="收藏"></a>
+                      </div>
+                    </li>
+                    <li>
+                      <span>9</span>
+                      <a href="" class="songs"></a>
+                      <div class="show-component">
+                        <a href="" class="bill-play icons" title="播放"></a>
+                        <a
+                          href=""
+                          class="bill-add-to-playlist icons"
+                          title="添加到播放列表"
+                        ></a>
+                        <a href="" class="bill-collect icons" title="收藏"></a>
+                      </div>
+                    </li>
+                    <li>
+                      <span>10</span>
+                      <a href="" class="songs"></a>
+                      <div class="show-component">
+                        <a href="" class="bill-play icons" title="播放"></a>
+                        <a
+                          href=""
+                          class="bill-add-to-playlist icons"
+                          title="添加到播放列表"
+                        ></a>
+                        <a href="" class="bill-collect icons" title="收藏"></a>
+                      </div>
+                    </li>
+                  </ol>
+                  <div class="bill-more">
+                    <a href="">查看全部&gt;</a>
+                  </div>
+                </div>
+              </div>
+              <div class="original-bill billBodyBox">
+                <div class="box-head">
+                  <div class="bill-cover">
+                    <img src="" alt="" />
+                    <a href="" class="bill-cover-glass"></a>
+                  </div>
+                  <div class="cover-title">
+                    <a href="">
+                      <h3>原创榜</h3>
+                    </a>
+                    <a href="" class="play" title="播放"></a>
+                    <a href="" class="collect" title="收藏"></a>
+                  </div>
+                </div>
+                <div class="box-body">
+                  <ol>
+                    <li>
+                      <span class="top-songs">1</span>
+                      <a href="" class="songs"></a>
+                      <div class="show-component">
+                        <a href="" class="bill-play icons" title="播放"></a>
+                        <a
+                          href=""
+                          class="bill-add-to-playlist icons"
+                          title="添加到播放列表"
+                        ></a>
+                        <a href="" class="bill-collect icons" title="收藏"></a>
+                      </div>
+                    </li>
+                    <li>
+                      <span class="top-songs">2</span>
+                      <a href="" class="songs"></a>
+                      <div class="show-component">
+                        <a href="" class="bill-play icons" title="播放"></a>
+                        <a
+                          href=""
+                          class="bill-add-to-playlist icons"
+                          title="添加到播放列表"
+                        ></a>
+                        <a href="" class="bill-collect icons" title="收藏"></a>
+                      </div>
+                    </li>
+                    <li>
+                      <span class="top-songs">3</span>
+                      <a href="" class="songs"></a>
+                      <div class="show-component">
+                        <a href="" class="bill-play icons" title="播放"></a>
+                        <a
+                          href=""
+                          class="bill-add-to-playlist icons"
+                          title="添加到播放列表"
+                        ></a>
+                        <a href="" class="bill-collect icons" title="收藏"></a>
+                      </div>
+                    </li>
+                    <li>
+                      <span>4</span>
+                      <a href="" class="songs"></a>
+                      <div class="show-component">
+                        <a href="" class="bill-play icons" title="播放"></a>
+                        <a
+                          href=""
+                          class="bill-add-to-playlist icons"
+                          title="添加到播放列表"
+                        ></a>
+                        <a href="" class="bill-collect icons" title="收藏"></a>
+                      </div>
+                    </li>
+                    <li>
+                      <span>5</span>
+                      <a href="" class="songs"></a>
+                      <div class="show-component">
+                        <a href="" class="bill-play icons" title="播放"></a>
+                        <a
+                          href=""
+                          class="bill-add-to-playlist icons"
+                          title="添加到播放列表"
+                        ></a>
+                        <a href="" class="bill-collect icons" title="收藏"></a>
+                      </div>
+                    </li>
+                    <li>
+                      <span>6</span>
+                      <a href="" class="songs"></a>
+                      <div class="show-component">
+                        <a href="" class="bill-play icons" title="播放"></a>
+                        <a
+                          href=""
+                          class="bill-add-to-playlist icons"
+                          title="添加到播放列表"
+                        ></a>
+                        <a href="" class="bill-collect icons" title="收藏"></a>
+                      </div>
+                    </li>
+                    <li>
+                      <span>7</span>
+                      <a href="" class="songs"></a>
+                      <div class="show-component">
+                        <a href="" class="bill-play icons" title="播放"></a>
+                        <a
+                          href=""
+                          class="bill-add-to-playlist icons"
+                          title="添加到播放列表"
+                        ></a>
+                        <a href="" class="bill-collect icons" title="收藏"></a>
+                      </div>
+                    </li>
+                    <li>
+                      <span>8</span>
+                      <a href="" class="songs"></a>
+                      <div class="show-component">
+                        <a href="" class="bill-play icons" title="播放"></a>
+                        <a
+                          href=""
+                          class="bill-add-to-playlist icons"
+                          title="添加到播放列表"
+                        ></a>
+                        <a href="" class="bill-collect icons" title="收藏"></a>
+                      </div>
+                    </li>
+                    <li>
+                      <span>9</span>
+                      <a href="" class="songs"></a>
+                      <div class="show-component">
+                        <a href="" class="bill-play icons" title="播放"></a>
+                        <a
+                          href=""
+                          class="bill-add-to-playlist icons"
+                          title="添加到播放列表"
+                        ></a>
+                        <a href="" class="bill-collect icons" title="收藏"></a>
+                      </div>
+                    </li>
+                    <li>
+                      <span>10</span>
+                      <a href="" class="songs"></a>
+                      <div class="show-component">
+                        <a href="" class="bill-play icons" title="播放"></a>
+                        <a
+                          href=""
+                          class="bill-add-to-playlist icons"
+                          title="添加到播放列表"
+                        ></a>
+                        <a href="" class="bill-collect icons" title="收藏"></a>
+                      </div>
+                    </li>
+                  </ol>
+                  <div class="bill-more">
+                    <a href="">查看全部&gt;</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 主体右部分 -->
+      <div class="bulkRight">
+        <div class="login-info">
+          <div class="login-info-desc">
+            <p>登录网易云音乐，可以享受无限收藏的乐趣，并且无限同步到手机</p>
+            <a href="" class="login-btn-red">用户登录</a>
+          </div>
+        </div>
+        <div class="user-profile">
+          <div class="profile-top">
+            <a href="" class="profile-top-left">
+              <img src="" alt="" class="profile-avatar" />
+            </a>
+            <div class="profile-top-right">
+              <h4 class="profile-username-box">
+                <a href="" class="profile-username"></a>
+              </h4>
+              <p class="level-box">
+                <span href="" class="level"></span>
+              </p>
+              <div>
+                <a href="">
+                  <i></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <ul class="profile-info">
+            <li class="event-count"></li>
+            <li class="follows"></li>
+            <li class="followeds"></li>
+          </ul>
+        </div>
+        <div class="singer">
+          <h3 class="singer-title">
+            <span>入驻歌手</span>
+            <a href="">查看全部 &gt;</a>
+          </h3>
+          <ul>
+            <li>
+              <a href="">
+                <div class="singer-head">
+                  <img src="" alt="" />
+                </div>
+                <div class="singer-info">
+                  <h4>
+                    <span class="singer-name"></span>
+                  </h4>
+                  <p class="singer-desc"></p>
+                </div>
+              </a>
+            </li>
+
+            <li>
+              <a href="">
+                <div class="singer-head">
+                  <img src="" alt="" />
+                </div>
+                <div class="singer-info">
+                  <h4>
+                    <span class="singer-name"></span>
+                  </h4>
+                  <p class="singer-desc"></p>
+                </div>
+              </a>
+            </li>
+
+            <li>
+              <a href="">
+                <div class="singer-head">
+                  <img src="" alt="" />
+                </div>
+                <div class="singer-info">
+                  <h4>
+                    <span class="singer-name"></span>
+                  </h4>
+                  <p class="singer-desc"></p>
+                </div>
+              </a>
+            </li>
+
+            <li>
+              <a href="">
+                <div class="singer-head">
+                  <img src="" alt="" />
+                </div>
+                <div class="singer-info">
+                  <h4>
+                    <span class="singer-name"></span>
+                  </h4>
+                  <p class="singer-desc"></p>
+                </div>
+              </a>
+            </li>
+
+            <li>
+              <a href="">
+                <div class="singer-head">
+                  <img src="" alt="" />
+                </div>
+                <div class="singer-info">
+                  <h4>
+                    <span class="singer-name"></span>
+                  </h4>
+                  <p class="singer-desc"></p>
+                </div>
+              </a>
+            </li>
+          </ul>
+          <div>
+            <a href="" class="apply">
+              <i>申请成为网易音乐人</i>
+            </a>
+          </div>
+        </div>
+        <div class="dj">
+          <h3 class="dj-title">
+            <span>热门主播</span>
+          </h3>
+          <ul>
+            <li>
+              <a href="" class="dj-head">
+                <img src="" alt="" />
+              </a>
+              <div class="dj-info">
+                <p>
+                  <a href="" class="dj-name"></a>
+                </p>
+                <p class="dj-desc"></p>
+              </div>
+            </li>
+
+            <li>
+              <a href="" class="dj-head">
+                <img src="" alt="" />
+              </a>
+              <div class="dj-info">
+                <p>
+                  <a href="" class="dj-name"></a>
+                </p>
+                <p class="dj-desc"></p>
+              </div>
+            </li>
+
+            <li>
+              <a href="" class="dj-head">
+                <img src="" alt="" />
+              </a>
+              <div class="dj-info">
+                <p>
+                  <a href="" class="dj-name"></a>
+                </p>
+                <p class="dj-desc"></p>
+              </div>
+            </li>
+
+            <li>
+              <a href="" class="dj-head">
+                <img src="" alt="" />
+              </a>
+              <div class="dj-info">
+                <p>
+                  <a href="" class="dj-name"></a>
+                </p>
+                <p class="dj-desc"></p>
+              </div>
+            </li>
+
+            <li>
+              <a href="" class="dj-head">
+                <img src="" alt="" />
+              </a>
+              <div class="dj-info">
+                <p>
+                  <a href="" class="dj-name"></a>
+                </p>
+                <p class="dj-desc"></p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 页面底部 -->
+    <div class="footer">
+      <div class="footer-wrap">
+        <div class="footer-left">
+          <p class="link">
+            <a href="">服务条款</a>
+            <span class="line">|</span>
+            <a href="">隐私政策</a>
+            <span class="line">|</span>
+            <a href="">儿童隐私政策</a>
+            <span class="line">|</span>
+            <a href="">版权投诉指引</a>
+            <span class="line">|</span>
+            <a href="">意见反馈</a>
+            <span class="line">|</span>
+            <a href="">广告合作</a>
+          </p>
+
+          <p class="right">
+            <span class="first">网易公司版权所有©1997-2022</span>
+            <span>杭州乐读科技有限公司运营：</span>
+            <a href="">浙网文[2021] 1186-054号</a>
+          </p>
+
+          <p class="contact">
+            <span class="first">违法和不良信息举报电话：0571-89853516</span>
+            <span>举报邮箱：</span>
+            <a href="">ncm5990@163.com</a>
+          </p>
+
+          <p class="right">
+            <a href="">粤B2-20090191-18 工业和信息化部备案管理系统网站</a>
+            <a href="">
+              <span class="police-logo"></span>
+              <span class="police-text">浙公网安备 33010902002564号</span>
+            </a>
+          </p>
+        </div>
+        <div class="footer-right">
+          <ul>
+            <li>
+              <a href="" class="amped"></a>
+              <span class="amped-desc first-desc"></span>
+            </li>
+
+            <li>
+              <a href="" class="user"></a>
+              <span class="user-desc"></span>
+            </li>
+
+            <li>
+              <a href="" class="musician"></a>
+              <span class="musician-desc"></span>
+            </li>
+
+            <li>
+              <a href="" class="sponsor"></a>
+              <span class="sponsor-desc"></span>
+            </li>
+
+            <li>
+              <a href="" class="award"></a>
+              <span class="award-desc"></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- 回到顶部按钮 -->
+    <a href="" class="back-top hidden"></a>
+
+    <div class="player-mod">
+      <div class="player">
+        <div class="music-desc">
+          <span class="player-name"></span>
+          <span class="player-artist"></span>
+        </div>
+        <audio controls class="audio">
+          <source src="" class="music" />
+        </audio>
+        <a href="" class="lock"></a>
+      </div>
+    </div>
+    <script src="jquery-3.6.0.js"></script>
+    <script type="module" src="js.cookie.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+  </body>
+</html>
