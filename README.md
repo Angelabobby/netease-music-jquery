@@ -1,4 +1,6 @@
 # netease-music-jquery
 网易云音乐首页，使用jQuery重构  
 
-https://angelabobby.github.io/netease-music-jquery/
+https://angelabobby.github.io/netease-music-jquery/  
+
+http://netease-music-jquery.vercel.app/
