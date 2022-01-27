@@ -28,7 +28,7 @@ $(function () {
   let loginBtnBox = $("div.login-btn-mod"); // 右上角登录按钮的容器
   let getCaptcha = $("a.get-captcha");
   let chooseLoginMethod = $("a.choose-login-method");
-  let logOut = $("a.log-out");
+  let logOut = $("a.log-out"); // 退出登录按钮
   let search = $(".search"); // 搜索容器
   let searchRes = $(".searchRes"); // 搜索结果容器
   let imgList = []; // 保存图片地址的数组
