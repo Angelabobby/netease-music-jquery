@@ -65,6 +65,7 @@ $(function () {
   function loginFillInfo(profile) {
     if (profile) {
       profileObj = JSON.parse(profile);
+      avatar.attr("src", profileObj.avatarUrl);
       profileAvatar.attr("src", profileObj.avatarUrl);
       profileUsername.html(profileObj.nickname);
       eventCount.html("动态 : " + profileObj.eventCount);
@@ -181,6 +182,7 @@ $(function () {
           }
           loginBox.hide(); // 登录成功，关闭登录框
           loginBtn.hide(); // 隐藏登录按钮
+          avatar.attr("src", Obj.profile.avatarUrl);
           avatar.show(); // 显示头像
           loginBtnBox.on("mouseenter", enter); // 鼠标进入事件显示下拉框
           loginBtnBox.on("mouseleave", leave); // 鼠标移出事件隐藏下拉框
@@ -241,6 +243,7 @@ $(function () {
           }
           loginBox.hide(); // 登录成功，关闭登录框
           loginBtn.hide(); // 隐藏登录按钮
+          avatar.attr("src", Obj.profile.avatarUrl);
           avatar.show(); // 显示头像
           loginBtnBox.on("mouseenter", enter); // 鼠标进入事件显示下拉框
           loginBtnBox.on("mouseleave", leave); // 鼠标移出事件隐藏下拉框
@@ -576,7 +579,6 @@ $(function () {
         $($("#g2 .coverImg")[i]).attr("src", monthData[i].picUrl);
         $($("#g2 .songName")[i]).html(monthData[i].name);
         $($("#g2 .songArtist")[i]).html(monthData[i].artists[0].name);
-        
 
         $($("#g4 .coverImg")[i]).attr("src", monthData[i].picUrl);
         $($("#g4 .songName")[i]).html(monthData[i].name);

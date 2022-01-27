@@ -246,3 +246,9 @@ div.drop-down li a em {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 12px;
 }
+
+/* 次级导航条（红色） */
+div.subNav {
+  height: 5px;
+  background-color: #C20C0C;
+}
