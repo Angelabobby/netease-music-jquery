@@ -113,13 +113,41 @@ $(function () {
   });
 
   // *****登录框拖动事件*****
+  let maxLeft = window.width() - loginBox.width(); // 登录框left的最大值
+  let maxTop = window.height() - loginBox.height(); // 登录框top的最大值
+  let oldX; // 记录鼠标横向位置
+  let oldY; // 记录鼠标纵向位置
+  let downX;
+  let downY; 
+  let left;
+  let topp;
   loginBoxHead.on("mousedown", function (Edown) {
+    downX = Edown.offsetX;
+    downY = Edown.offsetY;
     function move(Emove) {
       // e.clientX 鼠标在文档的横向位置
       // e.offsetX 鼠标在容器内的横向位置
       // div.offsetLeft 容器左边在父容器内的横向位置
-      loginBox.css("left", Emove.clientX - Edown.offsetX + "px");
-      loginBox.css("top", Emove.clientY - Edown.offsetY + "px");
+      left = Emove.clientX - downX;
+      topp = Emove.clientY - downY;
+      if (left < 0 && Emove.pageX < oldX) {
+        left = 0;
+        downX = Emove.offsetX;
+      }
+      if (left > maxLeft && Emove.pageX > oldX) {
+        left = maxLeft;
+        downX = Emove.offsetX;
+      }
+      if (topp < 0 && Emove.pageY < oldY) {
+        topp = 0;
+        downY = Emove.offsetY;
+      }
+      if (topp > maxTop && Emove.pageY > oldY) {
+        topp = maxTop;
+        downY = Emove.offsetY;
+      }
+      loginBox.css("left", left + "px");
+      loginBox.css("top", topp + "px");
     }
     $(window.document).on("mousemove", move);
     loginBoxHead.on("mouseup", function () {
@@ -306,10 +334,7 @@ $(function () {
         searchRes.html("");
         if (search.val() && Obj.result) {
           for (let i = 0; i < 5; i++) {
-            let str =
-              Obj.result.songs[i].name +
-              "-" +
-              Obj.result.songs[i].artists[0].name;
+            let str = Obj.result.songs[i].name + "-" + Obj.result.songs[i].artists[0].name;
             searchRes.append($("<div></div>").html(str));
           }
         }
@@ -473,9 +498,7 @@ $(function () {
       let result = Obj.result;
       for (let i = 0; i < playlistImgDiv.length; i++) {
         $(playlistImgs[i]).attr("src", result[i].picUrl);
-        $(playlistPlayCountSpan[i]).html(
-          `${parseInt(result[i].playCount / 10000)}万`
-        );
+        $(playlistPlayCountSpan[i]).html(`${parseInt(result[i].playCount / 10000)}万`);
         $(playlistDesc[i]).html(result[i].name);
         $(playAudioBtns[i]).on("click", function (e) {
           e.preventDefault();
@@ -493,10 +516,7 @@ $(function () {
       data: { id: albumID },
       dataType: "json",
       success: function (Obj) {
-        music.attr(
-          "src",
-          `https://music.163.com/song/media/outer/url?id=${Obj.songs[0].id}.mp3`
-        );
+        music.attr("src", `https://music.163.com/song/media/outer/url?id=${Obj.songs[0].id}.mp3`);
         audio[0].load();
         audio[0].play();
         playerName.html(Obj.songs[0].name);
