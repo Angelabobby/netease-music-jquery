@@ -115,7 +115,6 @@ $(function () {
   // *****登录框拖动事件*****
   let maxLeft = $(window).outerWidth() - loginBox.innerWidth(); // 登录框left的最大值
   let maxTop = $(window).outerHeight() - loginBox.innerHeight(); // 登录框top的最大值
-  console.log(maxLeft, maxTop);
   let oldX; // 记录鼠标横向位置
   let oldY; // 记录鼠标纵向位置
   let downX;
