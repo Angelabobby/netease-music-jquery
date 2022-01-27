@@ -16,10 +16,11 @@ $(function () {
   if (Cookies.get("userName") && profile) {
     let profileObj = JSON.parse(profile);
     loginBtn.hide(); // 隐藏登录按钮
-    avatar.attr("src", profileObj.avatarUrl);
+    avatar.attr("src", profileObj.avatarUrl); // 找到头像URL
     avatar.show(); // 显示头像
     loginBtnBox.on("mouseenter", enter); // 鼠标进入事件显示下拉框
     loginBtnBox.on("mouseleave", leave); // 鼠标移出事件隐藏下拉框
+    
   }
 
   // *****退出登录AJAX*****

@@ -1,6 +1,7 @@
 body {
   margin: 0;
   background-color: rgb(245, 245, 245);
+  z-index: 0;
 }
 
 div.top {
@@ -251,4 +252,178 @@ div.drop-down li a em {
 div.subNav {
   height: 5px;
   background-color: #C20C0C;
+}
+
+/* 页面主体 */
+div.bulk {
+  width: 981px;
+  height: 1425px;
+  margin: auto;
+  border: 1px solid rgb(211, 211, 211);
+  border-width: 0 1px;
+  background-color: white;
+  z-index: 1;
+}
+
+div.bulk-content {
+  width: 900px;
+  height: 501px;
+  padding: 40px
+}
+
+/* 页面底部 */
+div.footer {
+  border-top: 1px solid rgb(211, 211, 211);
+  width: 1903px;
+  height: 210px;
+}
+
+div.footer-wrap {
+  width: 980px;
+  height: 115px;
+  margin: auto;
+}
+
+div.footer-left {
+  width: 520px;
+  height: 100px;
+  padding-top: 15px;
+  float: left;
+}
+
+div.footer-left p {
+  font-size: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(102, 102, 102);
+  width: 520px;
+  height: 24px;
+  line-height: 24px;
+  margin: 0;
+}
+
+div.footer-left a {
+  text-decoration: none;
+}
+
+p.link a {
+  color: rgb(153, 153, 153);
+}
+
+p.link a:hover {
+  text-decoration: underline;
+}
+
+p.link span.line {
+  font-size: 12px;
+  line-height: 24px;
+  margin: 0 8px 0 10px;
+  color: rgb(194, 194, 194);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+p.right a,
+p.contact a {
+  color: rgb(102, 102, 102);
+}
+
+p.right a:hover,
+p.contact a:hover {
+  text-decoration: underline;
+}
+
+p.right span.first,
+p.contact span.first {
+  padding-right: 10px !important;
+}
+
+span.police-logo {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background-image: url(https://s2.music.126.net/style/web2/img/3rd/police.png?869c6c7e020978b8ad819dda93c89040);
+  background-position-x: 0%;
+  background-position-y: 0%;
+  background-size: cover;
+  vertical-align: -2px;
+}
+
+/* 页脚右部分 */
+div.footer-right {
+  float: right;
+}
+
+div.footer-right ul {
+  width: 420px;
+  height: 70px;
+  margin: 33px 0 0 0;
+  list-style: none;
+  padding-left: 0;
+}
+
+div.footer-right li {
+  width: 60px;
+  height: 70px;
+  float: left;
+}
+
+div.footer-right li:not(:first-child) {
+  margin-left: 30px;
+}
+
+div.footer-right li a {
+  display: block;
+  width: 50px;
+  height: 45px;
+  margin: 0 5px;
+  background-image: url(https://s2.music.126.net/style/web2/img/foot_enter_new.png?562a05542742ea94be3ae2bcef456261);
+  background-size: 110px 552px;
+  background-repeat: no-repeat;
+}
+
+div.footer-right li span {
+  display: inline-block;
+  width: 72px;
+  height: 14px;
+  margin: 5px 5px 0 -6px;
+  background-image: url(https://s2.music.126.net/style/web2/img/foot_enter_tt.png?f5a541fad152438724fb5c3852bbb8ae);
+  background-size: 180px 139px;
+}
+
+div.footer-right ul span {
+  margin-left: 4px;
+}
+
+div.footer-right ul span.first-desc {
+  margin-left: -6px;
+}
+
+div.footer-right a.amped {
+  background-position: -63px -456.5px;
+}
+div.footer-right span.amped-desc {
+  background-position: 0 -108px;
+}
+div.footer-right a.user {
+  background-position: -63px -101px;
+}
+div.footer-right span.user-desc {
+  background-position: -1px -91px;
+}
+div.footer-right a.musician {
+  background-position: 0 0;
+}
+div.footer-right span.musician-desc {
+  background-position: 0 0;
+}
+div.footer-right a.sponsor {
+  background-position: -60px -50px;
+}
+div.footer-right span.sponsor-desc {
+  background-position: 0 -54px;
+}
+div.footer-right a.award {
+  background-position: 0 -101px;
+}
+div.footer-right span.award-desc {
+  background-position: -1px -72px;
 }

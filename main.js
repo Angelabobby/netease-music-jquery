@@ -44,7 +44,7 @@ $(function () {
   $("button").on("click", function () {
     $.ajax({
       type: "get",
-      url: `https://muise-git-master-329639010.vercel.app/login/status?timestamp=${new Date().getTime()}`,
+      url: `https://muise-git-master-329639010.vercel.app/user/playlist?uid=32953014&timestamp=${new Date().getTime()}`,
       // data: { id: 6452 },
       dataType: "json",
       success: function (Obj) {
