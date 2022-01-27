@@ -1082,6 +1082,10 @@ a.songArtist {
   font-size: 12px;
   text-decoration: none;
   margin: 2px 0;
+  padding-right: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 a.songName:hover {

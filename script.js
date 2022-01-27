@@ -453,7 +453,6 @@ $(function () {
   });
 
   // *****获取歌单的异步请求*****
-
   let player = $("div.player"); // 播放器容器(绝对定位，需要移动)
   let audio = $("audio.audio"); // 播放器模块
   let music = $("source.music"); // 音乐源source标签
@@ -554,13 +553,13 @@ $(function () {
       let g4PlayBtns = $("#g4 a.play-icon-btn");
       // 第1、3组，下标5-9
       for (let i = 5; i < 10; i++) {
-        $("#g1 .coverImg")[i - 5].src = monthData[i].picUrl;
-        $("#g1 .songName")[i - 5].innertHtml = monthData[i].name;
-        $("#g1 .songArtist")[i - 5].innertHtml = monthData[i].artists[0].name;
+        $($("#g1 .coverImg")[i - 5]).attr("src", monthData[i].picUrl);
+        $($("#g1 .songName")[i - 5]).html(monthData[i].name);
+        $($("#g1 .songArtist")[i - 5]).html(monthData[i].artists[0].name);
 
-        $("#g3 .coverImg")[i - 5].src = monthData[i].picUrl;
-        $("#g3 .songName")[i - 5].innertHtml = monthData[i].name;
-        $("#g3 .songArtist")[i - 5].innertHtml = monthData[i].artists[0].name;
+        $($("#g3 .coverImg")[i - 5]).attr("src", monthData[i].picUrl);
+        $($("#g3 .songName")[i - 5]).html(monthData[i].name);
+        $($("#g3 .songArtist")[i - 5]).html(monthData[i].artists[0].name);
 
         $(g1PlayBtns[i - 5]).on("click", function (e) {
           e.preventDefault();
@@ -574,13 +573,14 @@ $(function () {
       }
       // 第2、4组，下标0-4
       for (let i = 0; i < 5; i++) {
-        $("#g2 .coverImg")[i].src = monthData[i].picUrl;
-        $("#g2 .songName")[i].innertHtml = monthData[i].name;
-        $("#g2 .songArtist")[i].innertHtml = monthData[i].artists[0].name;
+        $($("#g2 .coverImg")[i]).attr("src", monthData[i].picUrl);
+        $($("#g2 .songName")[i]).html(monthData[i].name);
+        $($("#g2 .songArtist")[i]).html(monthData[i].artists[0].name);
+        
 
-        $("#g4 .coverImg")[i].src = monthData[i].picUrl;
-        $("#g4 .songName")[i].innertHtml = monthData[i].name;
-        $("#g4 .songArtist")[i].innertHtml = monthData[i].artists[0].name;
+        $($("#g4 .coverImg")[i]).attr("src", monthData[i].picUrl);
+        $($("#g4 .songName")[i]).html(monthData[i].name);
+        $($("#g4 .songArtist")[i]).html(monthData[i].artists[0].name);
 
         $(g2PlayBtns[i]).on("click", function (e) {
           e.preventDefault();
