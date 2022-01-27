@@ -113,12 +113,13 @@ $(function () {
   });
 
   // *****登录框拖动事件*****
-  let maxLeft = window.width() - loginBox.width(); // 登录框left的最大值
-  let maxTop = window.height() - loginBox.height(); // 登录框top的最大值
+  let maxLeft = $(window).outerWidth() - loginBox.innerWidth(); // 登录框left的最大值
+  let maxTop = $(window).outerHeight() - loginBox.innerHeight(); // 登录框top的最大值
+  console.log(maxLeft, maxTop);
   let oldX; // 记录鼠标横向位置
   let oldY; // 记录鼠标纵向位置
   let downX;
-  let downY; 
+  let downY;
   let left;
   let topp;
   loginBoxHead.on("mousedown", function (Edown) {
@@ -148,9 +149,11 @@ $(function () {
       }
       loginBox.css("left", left + "px");
       loginBox.css("top", topp + "px");
+      oldX = Emove.pageX;
+      oldY = Emove.pageY;
     }
     $(window.document).on("mousemove", move);
-    loginBoxHead.on("mouseup", function () {
+    $(window.document).on("mouseup", function () {
       $(window.document).off("mousemove", move);
     });
   });
