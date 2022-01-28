@@ -1,4 +1,4 @@
-$(function () {
+$(window).on("load", function () {
   let loginInfo = $("div.login-info");
   let userProfile = $("div.user-profile");
   let loginBtn = $(".login-btn"); // 导航栏右上角登录按钮

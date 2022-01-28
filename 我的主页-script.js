@@ -1,4 +1,4 @@
-$(function () {
+$(window).on("load", function () {
   // *****登录成功后头像下拉列表显示/隐藏的函数*****
   let dropDown = $("div.drop-down"); // 登录后下拉框的容器
   function enter() {
@@ -20,7 +20,6 @@ $(function () {
     avatar.show(); // 显示头像
     loginBtnBox.on("mouseenter", enter); // 鼠标进入事件显示下拉框
     loginBtnBox.on("mouseleave", leave); // 鼠标移出事件隐藏下拉框
-    
   }
 
   // *****退出登录AJAX*****
