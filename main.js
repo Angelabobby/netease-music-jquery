@@ -40,12 +40,12 @@ $(window).on("load", function () {
   let index = 0; // 定义全局索引，用于同步轮播图、背景图和按钮交互信息
   let interval; // 定义全局定时器变量，用于定时切换轮播图
 
+  let cred;
   // 用于测试Ajax的按钮
   $("button").on("click", function () {
     $.ajax({
       type: "get",
-      url: `https://muise-git-master-329639010.vercel.app/user/playlist?uid=32953014&timestamp=${new Date().getTime()}`,
-      // data: { id: 6452 },
+      url: `https://muise-git-master-329639010.vercel.app/user/account?cookie=${cred}`,
       dataType: "json",
       success: function (Obj) {
         console.log(Obj);
@@ -172,6 +172,7 @@ $(window).on("load", function () {
       success: function (Obj) {
         console.log("密码登录", Obj);
         if (Obj.code === 200) {
+          cred = Obj.cookie; // 保存返回结果的cookie
           Cookies.set("userName", Obj.profile.nickname, 1 / 24); // 登陆成功设置cookies
           Cookies.set("userId", Obj.profile.userId, 1 / 24); // 登陆成功设置cookies
           Cookies.set("profile", JSON.stringify(Obj.profile), 1 / 24); // 用cookie保存登陆成功返回的对象
@@ -233,6 +234,7 @@ $(window).on("load", function () {
       success: function (Obj) {
         console.log("短信登录", Obj);
         if (Obj.code === 200) {
+          cred = Obj.cookie; // 保存返回结果的cookie
           Cookies.set("userName", Obj.profile.nickname, 1 / 24); // 登陆成功设置cookies
           Cookies.set("userId", Obj.profile.userId, 1 / 24); // 登陆成功设置cookies
           Cookies.set("profile", JSON.stringify(Obj.profile), 1 / 24); // 用cookie保存登陆成功返回的对象
